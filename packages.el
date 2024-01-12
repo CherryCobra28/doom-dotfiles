@@ -27,7 +27,7 @@
 ;; (package! builtin-package :disable t)
 (package! helm :disable t)
 (package! tabs :disable t)
-(package! comapany :disable t)
+;;(package! comapany :disable t)
 ;; You can override the recipe of a built in package without having to specify
 ;; all the properties for `:recipe'. These will inherit the rest of its recipe
 ;; from Doom or MELPA/ELPA/Emacsmirror:
