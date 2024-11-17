@@ -8,7 +8,11 @@
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;; (package! some-package)
-
+(package! d-mode)
+(package! serve-d :disable t)
+(package! raku-mode)
+(package! odin-mode
+  :recipe (:host github :repo "mattt-b/odin-mode"))
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
 ;; https://github.com/radian-software/straight.el#the-recipe-format

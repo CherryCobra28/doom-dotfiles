@@ -66,6 +66,34 @@
 ;;   `require' or `use-package'.
 ;; - `map!' for binding new keys
 ;;
+(use-package! odin-mode
+  :mode ("\\.odin\\'" . odin-mode)
+  :hook (odin-mode . lsp))
+
+;; Set up OLS as the language server for Odin, ensuring lsp-mode is loaded first
+(with-eval-after-load 'lsp-mode
+  (setq-default lsp-auto-guess-root t) ;; Helps find the ols.json file with Projectile or project.el
+  (setq lsp-language-id-configuration (cons '(odin-mode . "odin") lsp-language-id-configuration))
+
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-stdio-connection "/home/thom/lsp/ols/ols") ;; Adjust the path here
+                    :major-modes '(odin-mode)
+                    :server-id 'ols
+                    :multi-root t))) ;; Ensures lsp-mode sends "workspaceFolders" to the server
+
+(add-hook 'odin-mode-hook #'lsp)
+
+
+
+
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
 ;; To get information about any of these functions/macros, move the cursor over
 ;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
 ;; This will open documentation for it, including demos of how they are used.
